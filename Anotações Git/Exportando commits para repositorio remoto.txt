@@ -1,0 +1,23 @@
+Para exportar os commites para um repositório remoto basta seguir os seguindos comandos (dentro das pasta onde está o arquivo que será exportado)
+
+Adicionar primeiramente a origem dos arquivos (máquiana local)
+-> git remote add origin https://github.com/victormarson10/livro-receitas.git (link extraído do git hub)
+
+-> git remote -v (lista de repositorios cadastrados)
+
+-> git push origin master (master é como se fosse a branch que está sendo enviado o código)
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 1.32 KiB | 676.00 KiB/s, done.
+Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/victormarson10/livro-receitas.git
+ * [new branch]      master -> master
+
+
+Caso o arquivo que esteja no git seja diferente do arquivo disponível na máquina, é necessário juntar os arquivos para após isso, enviar para o git novamente, a junção é realizada com o comando
+
+-> git pull origin master
+
+git clone https://github.com/python/cpython.git

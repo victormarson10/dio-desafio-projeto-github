@@ -1,0 +1,60 @@
+1° Processo
+
+- Abrir Git Bash através do menu iniciar
+
+- ssh-keygen -t ed25519 -C victormarson10@gmail.com + Enter
+
+OBS: Inicialmente a chave gerada foi no caminho especificado do gerador de chaves
+
+Resultado:
+
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/c/Program Files/Java/jre7/bin/java.exe/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in
+Your public key has been saved in.pub
+The key fingerprint is:
+SHA256:fBdJL6Mg3HzFurOzcndVcvLz6w3DlYnfMpCsq7PTcy0 victormarson@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|           .o    |
+|     . o   o.o   |
+|      o + ..= .  |
+|       o o.o =+ =|
+|        S o.=. Bo|
+|         .oo o.o+|
+|         ..o .*o+|
+|        + *.E o=o|
+|        oBo* o.oo|
++----[SHA256]-----+
+
+Pegando chave privada e publica
+
+victo@LAPTOP-S21HCAUJ MINGW64 /c/Chave SSH Github
+$ cat ''$'\033''[D'$'\033''[C'$'\033''[D'  ''$'\033''[D'$'\033''[C'$'\033''[D.pub'
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABAIrxSGb+
+fvYwC1+WALaIM4AAAAEAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIJo+tqYg013wlvG/
+VI5K+qY3nlcMRhze66XTgbaEGcGLAAAAoNdzbPCdfqSMas5utZ5L/ux/Eu/nAW6jLKInBB
+qkXPdkxNWryU/9OF8yoUzD3avAVZoiiQzhUdhqAt4RMtEL/U9kGPHqZCPY698zNpffJsi6
++KSimWTgvU/6v32cZde3sd6mr0exWGjHrR6/4i7YsW6x6IWhI8eriinRWjSkeb6FYCX2Sw
+hLtlVXX1aCBKxgJyogdFjUdzu/U4isXbFZCFI=
+-----END OPENSSH PRIVATE KEY-----
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJo+tqYg013wlvG/VI5K+qY3nlcMRhze66XTgbaEGcGL victormarson@gmail.com
+
+OBS: Senha da criação da chave SSH -> 1234
+
+2° Processo
+
+Dentro do terminal (Git Bash) e dentro da pasta onde contem a chave:
+
+- eval $(ssh-agent -s) + Enter
+
+- ssh-add ''$'\033''[D'$'\033''[C'$'\033''[D'  ''$'\033''[D'$'\033''[C'$'\033''[D.pub'(nome da chave) + Enter
+
+- ssh-add ''$'\033''[D'$'\033''[C'$'\033''[D'  ''$'\033''[D'$'\033''[C'$'\033''[D.pub' + Senha da criação da chave + Enter
+
+OBS: Durante a criação da chave foi notado que o caminho do bash no terminal Git Bash estava padrão como 'c/Program Files/Java/jre7/bin/java.exe' e isso porque nas variáveis de ambiente, havia a variável HOME com o caminho 'C:\Program Files\Java\jre7\bin\java.exe', após excluir a variável o caminho padrão ficou com Users > Victo ficando correto dessa maneira. Foi gerado uma nova chave
+
+OBS: Não é possível utilizar o git clone cpm https quando existe um protocolo ssh na máquina é necessário utilizar o 'link' ssh

@@ -1,0 +1,93 @@
+Após criar um diretório, dentro da pasta onde será o projeto...
+
+-> git init (inicializando git, será criada um arquivo oculto gerencial .git que será usado pelo git para versinar os objetos manipulados)
+
+-> ls -a (mostrar arquivos ocultos)
+
+Obs: na primeira vez que será criado objetos no git, o mesmo exigirá um nickname e um e-mail vinculado isso porque é necessário um autor para quando gerar um commit tenha um autor dessa forma:
+
+-> $ git config --global user.email "victormarson10@gmail.com"
+
+-> $ git config --global user.name victor10
+
+
+Após isso foi feito o commit do arquivo markdown criado com os códigos (receita)
+
+-> $ git add *   (o comando add move o objeto para Staged esperando para 'entrar em ação')
+-> $ git commit -m "commit inicial"
+
+Logo após foi verificado o status do objeto no git e criado uma pasta e movido o objeto para a pasta
+
+-> $ git status
+On branch master
+nothing to commit, working tree clean
+
+-> $ mkdir receitas
+
+-> $ ls
+receitas/  strogonoff.md
+
+-> $ mv strogonoff.md ./receitas/
+
+Após mover o arquivo para a nova pasta é como se o git assimilasse que o objeto estava deletado, sendo assim ele até sugere a criação do objeto no commit
+
+-> $ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    strogonoff.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        receitas/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Após adicionar os arquivos que estão na nova pasta, o git conseguiu reconhecer e os arquivos ( caso processar o comando "restored" voltará para unstage) e após isso foi prosseguido com o commit
+
+-> $ git add strogonoff.md receitas/
+
+-> $ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    strogonoff.md -> receitas/strogonoff.md
+
+-> $ git commit -m "cria pastas receitas, move arquivo para receitas"
+[master 1db0df1] cria pastas receitas, move arquivo para receitas
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename strogonoff.md => receitas/strogonoff.md (100%)
+
+Criando outro arquivo dessa vez um README
+
+-> $ echo > README.md
+
+-> $ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Após adicionar o README e incluir informações, foi rodado o comando:
+
+-> $ git add *    (quando é feito com * pega tudo o que está no diretorio de trabalho e adicona para staged para poder commitar)
+warning: LF will be replaced by CRLF in README.md.
+The file will have its original line endings in your working directory
+
+->  git config --list (listar as configurações do Git)
+
+OBS: Caso queria trocar o e-mail e o name para que os commites tenham um novo autor por assim dizer, basta seguir os comando a seguir:
+
+-> git config --global --unset user.email
+
+-> git config --global --unset user.name 
+
+-> Após esses comando as configurações de email e name no git serão zeradas e após isso basta incluir as novas assinaturas
+
+-> git config --global user.email "xxxx"
+
+-> git config --global user.name "xxxx"
+
